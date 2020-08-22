@@ -13,20 +13,10 @@ import './Login.css'
 
 export class Login extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { username: "", password: "" ,recordar:false};
-        localStorage.setItem('username', "Mateo");
-        localStorage.setItem('password', "IETI1234");
-        localStorage.setItem('recordar', false);
-        this.handleUsername = this.handleUsername.bind(this);
-        this.handlePassword = this.handlePassword.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
     render() {
         return (
             <React.Fragment>
+
                 <CssBaseline />
                 <main className="layout">
                     <Paper className="paper">
@@ -36,8 +26,8 @@ export class Login extends React.Component {
                         <Typography variant="h2">Sign in</Typography>
                         <form className="form">
                             <FormControl margin="normal" required fullWidth>
-                                <InputLabel htmlFor="username">Nombre de usuario</InputLabel>
-                                <Input id="username" name="username" autoComplete="username" autoFocus onChange={this.handleUsername} selected={this.state.userName}/>
+                                <InputLabel htmlFor="email">Email Address</InputLabel>
+                                <Input id="email" name="email" autoComplete="email" autoFocus />
                             </FormControl>
                             <FormControl margin="normal" required fullWidth>
                                 <InputLabel htmlFor="password">Password</InputLabel>
@@ -46,8 +36,6 @@ export class Login extends React.Component {
                                     type="password"
                                     id="password"
                                     autoComplete="current-password"
-                                    onChange={this.handlePassword}
-                                    selected={this.state.password}
                                 />
                             </FormControl>
                             <Button
@@ -56,7 +44,6 @@ export class Login extends React.Component {
                                 variant="contained"
                                 color="primary"
                                 className="submit"
-                                onClick={this.handleSubmit}   
                             >
                                 Sign in
                             </Button>
@@ -65,23 +52,6 @@ export class Login extends React.Component {
                 </main>
             </React.Fragment>
         );
-
-    }
-
-    handleUsername(e) {
-        this.setState({ username: e.target.value });
-    }
-
-    handlePassword(e) {
-        this.setState({ password: e.target.value })
-    }
-
-    handleSubmit(e) {
-        if (this.state.username == localStorage.getItem("username") && this.state.password == localStorage.getItem("password")) {
-            
-            localStorage.setItem("recordar", true);
-        }
-        else alert("Usuario o contraseña incorrectas")
     }
 
 }
